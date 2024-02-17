@@ -16,9 +16,14 @@ const Info = () => {
     
     // 8.2.1 마운트될 때만 실행하고 싶을 때
     // 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행
+    // useEffect(() => {
+    //     console.log('마운트될 떄만 실행됩니다.');
+    // }, []);
+
+    // 8.2.2 특정 값이 업데이트 될 때만 실행하고 싶을 때
     useEffect(() => {
-        console.log('마운트될 떄만 실행됩니다.');
-    }, []);
+        console.log(name);
+    }, [name]);
 
     const onChangeName = e => {
         setName(e.target.value);
