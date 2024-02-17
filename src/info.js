@@ -6,13 +6,19 @@ const Info = () => {
 
     // 8.2 useEffect
     // 컴포넌트가 랜더링될 때마다 특정 작업을 수행하도록 설정할수 있는 Hook입니다.
+    // useEffect(() => {
+    //     console.log('랜더링이 완료되었습니다!');
+    //     console.log({
+    //         name,
+    //         nickname
+    //     });
+    // });
+    
+    // 8.2.1 마운트될 때만 실행하고 싶을 때
+    // 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행
     useEffect(() => {
-        console.log('랜더링이 완료되었습니다!');
-        console.log({
-            name,
-            nickname
-        });
-    });
+        console.log('마운트될 떄만 실행됩니다.');
+    }, []);
 
     const onChangeName = e => {
         setName(e.target.value);
