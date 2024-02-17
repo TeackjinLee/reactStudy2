@@ -21,9 +21,18 @@ const Info = () => {
     // }, []);
 
     // 8.2.2 특정 값이 업데이트 될 때만 실행하고 싶을 때
+    // useEffect(() => {
+    //     console.log(name);
+    // }, [name]);
+    
+    // 8.2.3 뒷정리하기
     useEffect(() => {
+        console.log('effect');
         console.log(name);
-    }, [name]);
+        return () => {
+            console.log('unmount');
+        };
+    }, []);
 
     const onChangeName = e => {
         setName(e.target.value);
