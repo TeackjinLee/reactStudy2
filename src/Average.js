@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useCallback} from 'react';
 // 8.4 useMemo
 const getAverage = numbers => {
     console.log('평균값 계산 중...');
@@ -10,15 +10,27 @@ const getAverage = numbers => {
 const Average = () => {
     const [list, setList] = useState([]);
     const [number, setNumber] = useState('');
-
-    const onChange = e => {
+    
+    // useMemo와 비슷, 렌더링 성능을 최적화 해야 하는 상황에 사용, Hook을 사용하면 만들어 놨던 함수를 재사용 할 수 있다.
+    // const onChange = e => {
+    //     setNumber(e.target.value);
+    // };
+    // const onInsert = e => {
+    //     const nextList = list.concat(parseInt(number));
+    //     setList(nextList);
+    //     setNumber('');
+    // }
+    // 8.5 useCallback
+    const onChange = useCallback(e => {
         setNumber(e.target.value);
-    };
-    const onInsert = e => {
+    }, []); // 컴포넌트가 처음 렌더링될 때만 함수 생성
+    const onInsert = useCallback(() => {
         const nextList = list.concat(parseInt(number));
         setList(nextList);
         setNumber('');
-    }
+    }, [number, list]);
+
+    
 
     const avg = useMemo(() => getAverage(list), [list]);
 
