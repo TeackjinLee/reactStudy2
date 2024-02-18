@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 // import Info from './info';
-import Counter from './Counter_reduce'
+// import Counter from './Counter_reduce'
+import Info from './info_useReduce'
 
 const App = () => {
-  return <Counter />
+  return <Info />
 }
 
 // function App() {
